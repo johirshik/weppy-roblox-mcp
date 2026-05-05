@@ -1,6 +1,6 @@
 # WEPPY — Canonical Web Docs
 
-> WEPPY is an MCP server that lets AI coding agents control a live Roblox Studio session and interact with scripts, instances, terrain, lighting, assets, audio, and animations.
+> WEPPY is an MCP server that lets AI coding agents control a live Roblox Studio session and interact with scripts, instances, terrain, lighting, assets, audio, animations, and UI Studio workflows.
 
 This package intentionally does not ship a standalone full documentation surface.
 
@@ -11,4 +11,3 @@ Canonical documentation lives on the web:
 - Pro plans: https://weppyai.com/en/plans
 
 For app-specific setup, open the web install page and choose the relevant AI client guide.
-

@@ -1,0 +1,10 @@
+# Repository-only documentation and CI assets.
+docs/
+.github/
+
+# Local/editor metadata.
+.DS_Store
+
+# Registry/inspection files not needed at npm runtime.
+Dockerfile
+.gitattributes

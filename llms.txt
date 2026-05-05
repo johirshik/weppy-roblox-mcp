@@ -2,7 +2,7 @@
 
 > WEPPY is an MCP server that lets AI coding agents (Claude, Codex,
 > Cursor, Gemini) control a live Roblox Studio session — create and edit scripts,
-> instances, terrain, lighting, assets, audio, and animations via natural language.
+> instances, terrain, lighting, assets, audio, animations, and UI Studio workflows via natural language.
 
 ## What it does
 
@@ -14,6 +14,7 @@ terrain, and more — inside a live Studio session.
 - Action-based MCP tools covering the full Roblox Studio API surface
 - Bidirectional project sync between Roblox Studio and local files (Pro)
 - Automated playtest: AI starts/stops Play/Run, injects test scripts, collects logs
+- UI Studio: AI creates in-game UI that matches your game's style or analyzes existing UI and suggests improvements
 - Web dashboard: monitor AI actions, tool history, sync state, and changelog in real time at `http://localhost:3002`
 - Multi-place support (up to 3 places simultaneously)
 - Roblox Explorer VSCode extension for browsing Studio hierarchy
@@ -40,7 +41,7 @@ Safari / Firefox users should open the web install page and follow the browser-s
 ## Tiers
 
 - Basic (Free): MCP tool execution + one-way Studio -> Local sync
-- Pro: Bidirectional sync, bulk actions, terrain generation, spatial analysis, multi-place support, advanced tools
+- Pro: Bidirectional sync, UI Studio, bulk actions, terrain generation, spatial analysis, multi-place support, advanced tools
 
 ## Detailed docs
 
@@ -56,7 +57,7 @@ Safari / Firefox users should open the web install page and follow the browser-s
 ## Optional
 
 - Roblox Explorer VSCode extension (browse synced instance tree)
-- Pro subscription for bidirectional sync and advanced tools
+- Pro subscription for bidirectional sync, UI Studio, and advanced tools
 
 ## Links
 
