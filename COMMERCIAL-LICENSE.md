@@ -6,6 +6,7 @@ If you need commercial terms that differ from AGPL-3.0, including closed-source 
 
 Contact:
 
+- Email: <support@weppyai.com>
 - GitHub Issues: <https://github.com/hope1026/weppy-roblox-mcp/issues/new>
 
 No commercial rights are granted unless a separate written agreement is executed.

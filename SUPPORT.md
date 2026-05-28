@@ -17,3 +17,9 @@ Please include:
 - What you've already tried
 
 Do not post raw license keys, receipts, email addresses, or personal billing details in public issues.
+
+## Private Support
+
+For billing, receipt, license key, account-specific Pro activation, commercial licensing, or security-sensitive reports, email <support@weppyai.com>.
+
+Do not send raw license keys unless requested. If you need to reference a key, include only the first and last few characters.
