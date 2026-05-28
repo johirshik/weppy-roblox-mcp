@@ -11,7 +11,9 @@
 
 Do **not** include exploit details, secrets, license keys, or private project data in public reports.
 
-Report security issues via [GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues/new) with the title prefixed `[SECURITY]` and only a high-level summary.
+Report security issues by emailing <support@weppyai.com>.
+
+If you need to open a public [GitHub Issue](https://github.com/hope1026/weppy-roblox-mcp/issues/new), prefix the title with `[SECURITY]` and include only a high-level summary.
 
 We will respond within 72 hours and aim to release a fix within 14 days for confirmed vulnerabilities.
 

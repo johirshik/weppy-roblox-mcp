@@ -3,10 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.7.12] - 2026-05-28
 
+### Features
 
+- **More helpful Basic-plan alternatives for Pro requests** — When a Basic user asks an AI agent to use a Pro-only feature, WEPPY can now complete more of those requests with the closest available Basic behavior instead of stopping immediately. This helps common work continue across selection details, object browsing, Workspace summaries, property changes, simple multi-object edits, UI creation and editing, lighting/time/effect changes, and safe script lookup. Requests that truly require Pro still show the Pro guidance.
 
+### Stability
 
+- **Clearer repeated-request handling** — If the same request is sent twice, WEPPY now reports it as a repeated request instead of letting it look like Studio is taking too long to respond. This reduces confusing long waits and makes retry behavior easier to understand.
+- **Clearer error reports** — Connection delays, Studio response timeouts, and repeated requests are now separated more clearly in WEPPY's error reporting, making support and troubleshooting more accurate without changing existing workflows.
+- **More reliable Basic/Pro checks** — The validation flow for Pro behavior and Basic-plan alternatives is more stable, especially when testing a connected Studio session after switching between Pro and Basic.
 
 
 
