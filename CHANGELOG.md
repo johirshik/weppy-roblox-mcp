@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## [2.7.13] - 2026-06-02
+
+### Stability
+
+- **Stability improvements** — WEPPY now tracks first-time MCP usage more reliably for operations reporting while keeping existing Studio workflows unchanged. No setup changes are required.
+
 ## [2.7.12] - 2026-05-28
 
 ### Features
