@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.7.16] - 2026-06-05
+
+### Bug Fixes
+
+- **More reliable full sync for large places** — WEPPY no longer lets the server-side sync cleanup timer expire while Studio is still actively uploading a large Workspace in chunks. This prevents full sync from stopping with errors like `Cannot read properties of null (reading 'setClassName')` during long-running project syncs.
+
+### Stability
+
+- **Longer wait time for full sync completion** — The Roblox Studio plugin now gives full sync completion requests more time to finish, so large temp-folder swaps, index saves, and sourcemap updates can complete without being reported as a `/sync/init` timeout.
+
 ## [2.7.15] - 2026-06-03
 
 ### Stability
