@@ -9,6 +9,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [2.8.2] - 2026-06-15
+
+### Bug Fixes
+
+- **More complete Dashboard bug reports** — Bug reports opened from WEPPY Dashboard now keep the Roblox Studio version when Studio reconnects or refreshes its plugin metadata. If the Plugin cannot report the Studio version, WEPPY also checks the installed Roblox Studio app or executable and marks that value as an installed-app fallback in the GitHub issue prefill. This gives support reports the Studio version more consistently without requiring any setup change.
+
 ## [2.8.1] - 2026-06-15
 
 ### Features
