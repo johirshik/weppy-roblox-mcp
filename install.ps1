@@ -223,6 +223,9 @@ fs.mkdirSync(path.dirname(configPath), { recursive: true });
 fs.writeFileSync(tempPath, JSON.stringify(next, null, 2) + '\n');
 fs.renameSync(tempPath, configPath);
 "@
+        if ($LASTEXITCODE -ne 0) {
+            throw 'Antigravity MCP config update failed'
+        }
     } finally {
         Remove-Item Env:\MCP_CONFIG_PATH -ErrorAction SilentlyContinue
     }
