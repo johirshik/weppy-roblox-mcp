@@ -100,8 +100,8 @@ jobs:
           const antigravityMcp = JSON.parse(fs.readFileSync(path.join(root, 'plugins/weppy-roblox-mcp/mcp_config.json'), 'utf8'));
           const expected = { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] };
 
-          if (codexMarketplace.interface?.displayName !== 'WEPPY Roblox AI Toolkit') {
-            throw new Error('Codex marketplace display name must be WEPPY Roblox AI Toolkit');
+          if (codexMarketplace.interface?.displayName !== 'WEPPY AI Agent Plugin') {
+            throw new Error('Codex marketplace display name must be WEPPY AI Agent Plugin');
           }
           if (codexMarketplace.plugins?.[0]?.name !== 'weppy-roblox-ai-toolkit') {
             throw new Error('Codex marketplace plugin id must be weppy-roblox-ai-toolkit');
@@ -115,8 +115,8 @@ jobs:
           if (codexPlugin.name !== 'weppy-roblox-ai-toolkit') {
             throw new Error('Codex plugin id must be weppy-roblox-ai-toolkit');
           }
-          if (codexPlugin.interface?.displayName !== 'WEPPY Roblox AI Toolkit') {
-            throw new Error('Codex plugin display name must be WEPPY Roblox AI Toolkit');
+          if (codexPlugin.interface?.displayName !== 'WEPPY AI Agent Plugin') {
+            throw new Error('Codex plugin display name must be WEPPY AI Agent Plugin');
           }
           if (JSON.stringify(claudePlugin.mcpServers?.['weppy-roblox-mcp']) !== JSON.stringify(expected)) {
             throw new Error('Claude plugin MCP command is not @latest npm command');
@@ -135,7 +135,7 @@ jobs:
           }
           if (JSON.stringify(antigravityPlugin) !== JSON.stringify({
             name: 'weppy-roblox-ai-toolkit',
-            description: 'WEPPY Roblox AI Toolkit setup for Antigravity.',
+            description: 'WEPPY AI Agent Plugin for Antigravity.',
           })) {
             throw new Error('Antigravity plugin manifest is invalid');
           }
@@ -984,7 +984,7 @@ jobs:
         shell: pwsh
         run: |
           $log = Join-Path $env:RUNNER_TEMP 'install-output.log'
-          if (-not (Select-String -Path $log -SimpleMatch 'Windows Antigravity IDE plugin discovery is unverified; MCP fallback preserved' -Quiet)) {
+          if (-not (Select-String -Path $log -SimpleMatch 'WEPPY AI Agent Plugin discovery in Windows Antigravity IDE is unverified; MCP fallback preserved' -Quiet)) {
             throw 'Windows Antigravity IDE discovery warning is missing'
           }
           $configPath = Join-Path $env:USERPROFILE '.gemini\config\mcp_config.json'
