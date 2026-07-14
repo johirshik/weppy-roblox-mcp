@@ -1,54 +1,54 @@
-{
-  "name": "@rafsunboss77/roblox-mcp",
-  "version": "2.10.4",
-  "description": "WEPPY+ MCP server for Roblox Studio — AI coding agent integration with KeyAuth licensing",
-  "main": "dist/index.js",
-  "type": "module",
-  "bin": {
-    "weppy-roblox-mcp": "./dist/index.js",
-    "roblox-mcp": "./dist/index.js"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "start": "node dist/index.js"
-  },
-  "keywords": [
-    "mcp",
-    "mcp-server",
-    "model-context-protocol",
-    "roblox",
-    "roblox-studio",
-    "roblox-plugin",
-    "roblox-development",
-    "luau",
-    "ai",
-    "ai-agent",
-    "llm",
-    "coding-agent",
-    "automation",
-    "game-development",
-    "studio-integration",
-    "claude",
-    "claude-code",
-    "codex",
-    "gemini",
-    "cursor",
-    "vscode",
-    "weppy-plus"
-  ],
-  "author": "rafsunboss77",
-  "license": "AGPL-3.0",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/johirshik/weppy-roblox-mcp.git"
-  },
-  "bugs": {
-    "url": "https://github.com/johirshik/weppy-roblox-mcp/issues"
-  },
-  "homepage": "https://github.com/johirshik/weppy-roblox-mcp#readme"
+﻿{
+    "name":  "@rafsunboss77/roblox-mcp",
+    "version":  "2.10.5",
+    "description":  "WEPPY+ MCP server for Roblox Studio â€” AI coding agent integration with KeyAuth licensing",
+    "main":  "dist/index.js",
+    "type":  "module",
+    "bin":  {
+                "weppy-roblox-mcp":  "./dist/index.js",
+                "roblox-mcp":  "./dist/index.js"
+            },
+    "publishConfig":  {
+                          "access":  "public"
+                      },
+    "scripts":  {
+                    "start":  "node dist/index.js"
+                },
+    "keywords":  [
+                     "mcp",
+                     "mcp-server",
+                     "model-context-protocol",
+                     "roblox",
+                     "roblox-studio",
+                     "roblox-plugin",
+                     "roblox-development",
+                     "luau",
+                     "ai",
+                     "ai-agent",
+                     "llm",
+                     "coding-agent",
+                     "automation",
+                     "game-development",
+                     "studio-integration",
+                     "claude",
+                     "claude-code",
+                     "codex",
+                     "gemini",
+                     "cursor",
+                     "vscode",
+                     "weppy-plus"
+                 ],
+    "author":  "rafsunboss77",
+    "license":  "AGPL-3.0",
+    "engines":  {
+                    "node":  "\u003e=18.0.0"
+                },
+    "repository":  {
+                       "type":  "git",
+                       "url":  "https://github.com/johirshik/weppy-roblox-mcp.git"
+                   },
+    "bugs":  {
+                 "url":  "https://github.com/johirshik/weppy-roblox-mcp/issues"
+             },
+    "homepage":  "https://github.com/johirshik/weppy-roblox-mcp#readme"
 }
