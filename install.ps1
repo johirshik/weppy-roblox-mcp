@@ -177,13 +177,13 @@ function Test-McpJsonConfigured($configPath) {
 }
 
 # Require an explicit `@<tag>` so the installer can upgrade legacy bare
-# entries (`@weppy/roblox-mcp`) — those reuse npx cache and trap users on
+# entries (`@rafsunboss77/roblox-mcp`) — those reuse npx cache and trap users on
 # outdated versions. Tagged entries (`@latest`, `@2.6.4`, …) are preserved.
 function Test-WeppyPackageSpec($value) {
     if ([string]::IsNullOrWhiteSpace($value)) {
         return $false
     }
-    return $value -match '^@weppy/roblox-mcp@.+$'
+    return $value -match '^@rafsunboss77/roblox-mcp@.+$'
 }
 
 # Add the MCP server under the canonical `mcpServers` wrapper in the Antigravity
@@ -213,7 +213,7 @@ const next = { ...config };
 delete next['weppy-roblox-mcp'];
 next.mcpServers = {
   ...(mcpServers || {}),
-  'weppy-roblox-mcp': { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] }
+  'weppy-roblox-mcp': { command: 'npx', args: ['-y', '@rafsunboss77/roblox-mcp@latest'] }
 };
 const tempPath = configPath + '.weppy-tmp-' + process.pid;
 if (exists) {
@@ -322,7 +322,7 @@ const path = require('path');
 
 const sharedPath = process.env.ANTIGRAVITY_SHARED_CONFIG_PATH;
 const legacyPath = process.env.ANTIGRAVITY_LEGACY_CONFIG_PATH;
-const canonicalEntry = { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] };
+const canonicalEntry = { command: 'npx', args: ['-y', '@rafsunboss77/roblox-mcp@latest'] };
 
 function readConfig(configPath) {
   if (!fs.existsSync(configPath)) return { config: {}, exists: false };
@@ -948,7 +948,7 @@ const withoutCodex = removeCodexBlocks(source);
 const canonicalBlock = [
   '[mcp_servers.weppy-roblox-mcp]',
   'command = "npx"',
-  'args = ["-y", "@weppy/roblox-mcp@latest"]',
+  'args = ["-y", "@rafsunboss77/roblox-mcp@latest"]',
 ].join('\n');
 const separator = withoutCodex.trim().length > 0 ? '\n\n' : '';
 
@@ -976,7 +976,7 @@ const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
 try { config = JSON.parse(fs.readFileSync(configPath, 'utf8')); } catch {}
 if (!config.mcpServers) config.mcpServers = {};
-config.mcpServers['weppy-roblox-mcp'] = { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] };
+config.mcpServers['weppy-roblox-mcp'] = { command: 'npx', args: ['-y', '@rafsunboss77/roblox-mcp@latest'] };
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
 "@
     } finally {
@@ -1297,7 +1297,7 @@ catch {
 # ═══════════════════════════════════
 Write-Step "1/3" "Setup WEPPY+ Roblox Studio Plugin"
 
-if (Confirm-Action "  Run npx -y @weppy/roblox-mcp@latest --setup?") {
+if (Confirm-Action "  Run npx -y @rafsunboss77/roblox-mcp@latest --setup?") {
     try {
         $npmCommandPath = Resolve-NpmCommand
         $npmDir = Split-Path $npmCommandPath -Parent
@@ -1315,7 +1315,7 @@ if (Confirm-Action "  Run npx -y @weppy/roblox-mcp@latest --setup?") {
             # the interactive pwsh terminal stdin (which would cause it to hang under irm|iex).
             # The @latest tag forces npx to resolve from the registry instead of
             # reusing an older version pinned in the npm cache.
-            $null | & $npxPath -y "@weppy/roblox-mcp@latest" --setup
+            $null | & $npxPath -y "@rafsunboss77/roblox-mcp@latest" --setup
             if ($LASTEXITCODE -ne 0) {
                 Write-Warn "Setup encountered a warning (non-blocking)"
             } else {
@@ -1374,7 +1374,7 @@ function Test-ClaudeCliConfigured($cliCommand) {
         if ($LASTEXITCODE -ne 0) { return $false }
         $line = $listOutput | Select-String -Pattern '^weppy-roblox-mcp:' | Select-Object -First 1
         if (-not $line) { return $false }
-        return ($line.Line -match '@weppy/roblox-mcp@')
+        return ($line.Line -match '@rafsunboss77/roblox-mcp@')
     } catch {
         return $false
     }
@@ -1484,7 +1484,7 @@ else {
 
 if ($detectedNames.Count -eq 0) {
     Write-Warn "No AI apps detected"
-    Write-Info "Register MCP server manually: npx -y @weppy/roblox-mcp@latest"
+    Write-Info "Register MCP server manually: npx -y @rafsunboss77/roblox-mcp@latest"
 }
 else {
     Write-Host ""
@@ -1541,7 +1541,7 @@ else {
                             # Best-effort remove any legacy bare entry so the subsequent add can
                             # install the canonical `@latest` form.
                             try { & $claudeCodeCliCommand mcp remove weppy-roblox-mcp *> $null } catch {}
-                            & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2> $claudeStderrFile
+                            & $claudeCodeCliCommand mcp add weppy-roblox-mcp -- npx -y "@rafsunboss77/roblox-mcp@latest" 2> $claudeStderrFile
                             $claudeExit = $LASTEXITCODE
                             if ($claudeExit -eq 0) {
                                 $claudeUpdated = $true
@@ -1601,7 +1601,7 @@ else {
                     if ($codexCliCommand) {
                         try { & $codexCliCommand mcp remove weppy-roblox-mcp *> $null } catch {}
                         try {
-                            & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest"
+                            & $codexCliCommand mcp add weppy-roblox-mcp -- npx -y "@rafsunboss77/roblox-mcp@latest"
                         } catch {}
                     }
                     Set-CodexMcpConfig $codexConfig

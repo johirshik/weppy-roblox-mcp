@@ -114,7 +114,7 @@ const configPath = process.env.MCP_CONFIG_PATH;
 let config = {};
 try { config = JSON.parse(fs.readFileSync(configPath, "utf8")); } catch {}
 if (!config.mcpServers) config.mcpServers = {};
-config.mcpServers["weppy-roblox-mcp"] = { command: "npx", args: ["-y", "@weppy/roblox-mcp@latest"] };
+config.mcpServers["weppy-roblox-mcp"] = { command: "npx", args: ["-y", "@rafsunboss77/roblox-mcp@latest"] };
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
 '
 }
@@ -162,7 +162,7 @@ const next = { ...config };
 delete next["weppy-roblox-mcp"];
 next.mcpServers = {
   ...(mcpServers || {}),
-  "weppy-roblox-mcp": { command: "npx", args: ["-y", "@weppy/roblox-mcp@latest"] }
+  "weppy-roblox-mcp": { command: "npx", args: ["-y", "@rafsunboss77/roblox-mcp@latest"] }
 };
 const tempPath = `${configPath}.weppy-tmp-${process.pid}`;
 if (exists) {
@@ -826,7 +826,7 @@ const withoutCodex = removeCodexBlocks(source);
 const canonicalBlock = [
   "[mcp_servers.weppy-roblox-mcp]",
   "command = \"npx\"",
-  "args = [\"-y\", \"@weppy/roblox-mcp@latest\"]",
+  "args = [\"-y\", \"@rafsunboss77/roblox-mcp@latest\"]",
 ].join("\n");
 const separator = withoutCodex.trim().length > 0 ? "\n\n" : "";
 
@@ -1082,7 +1082,7 @@ const path = require('path');
 
 const sharedPath = process.env.ANTIGRAVITY_SHARED_CONFIG_PATH;
 const legacyPath = process.env.ANTIGRAVITY_LEGACY_CONFIG_PATH;
-const canonicalEntry = { command: 'npx', args: ['-y', '@weppy/roblox-mcp@latest'] };
+const canonicalEntry = { command: 'npx', args: ['-y', '@rafsunboss77/roblox-mcp@latest'] };
 
 function readConfig(configPath) {
   if (!fs.existsSync(configPath)) return { config: {}, exists: false };
@@ -1270,7 +1270,7 @@ success "Node.js $(node -v) detected"
 # ═══════════════════════════════════
 step "1/3" "Setup WEPPY+ Roblox Studio Plugin"
 
-if confirm "  Run npx -y @weppy/roblox-mcp@latest --setup?"; then
+if confirm "  Run npx -y @rafsunboss77/roblox-mcp@latest --setup?"; then
   setup_tmp_dir=""
   if setup_tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/weppy-setup-XXXXXX" 2>/dev/null); then
     :
@@ -1283,7 +1283,7 @@ if confirm "  Run npx -y @weppy/roblox-mcp@latest --setup?"; then
     # bash의 남은 스크립트 바이트를 소비해버리는 문제를 방지한다
     # The @latest tag forces npx to resolve from the registry instead of
     # reusing an older version pinned in the npm cache.
-    if (cd "$setup_tmp_dir" && npx -y "@weppy/roblox-mcp@latest" --setup </dev/null); then
+    if (cd "$setup_tmp_dir" && npx -y "@rafsunboss77/roblox-mcp@latest" --setup </dev/null); then
       success "Setup complete"
     else
       warn "Setup encountered a warning (non-blocking)"
@@ -1303,7 +1303,7 @@ fi
 step "2/3" "Register MCP with AI apps"
 printf "  Automatic registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI\n"
 
-MCP_COMMAND='npx -y @weppy/roblox-mcp@latest'
+MCP_COMMAND='npx -y @rafsunboss77/roblox-mcp@latest'
 ANTIGRAVITY_SHARED_CONFIG="$HOME/.gemini/config/mcp_config.json"
 ANTIGRAVITY_LEGACY_CLI_CONFIG="$HOME/.gemini/antigravity-cli/mcp_config.json"
 ANTIGRAVITY_CLI_COMMAND="$(resolve_optional_cli_command agy 2>/dev/null || true)"
@@ -1337,7 +1337,7 @@ is_claude_cli_configured() {
   # (e.g. `@latest`). Legacy bare entries fall through and get re-registered.
   "$CLAUDE_CLI_COMMAND" mcp list 2>/dev/null \
     | grep "^weppy-roblox-mcp:" \
-    | grep -q "@weppy/roblox-mcp@"
+    | grep -q "@rafsunboss77/roblox-mcp@"
 }
 
 if is_claude_cli_configured \
@@ -1498,7 +1498,7 @@ else
           # Capture the CLI exit code immediately so it isn't overwritten by the
           # subsequent grep check (which would otherwise leak its own exit code).
           claude_exit_code=0
-          "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" 2>"$claude_stderr_file" || claude_exit_code=$?
+          "$CLAUDE_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@rafsunboss77/roblox-mcp@latest" 2>"$claude_stderr_file" || claude_exit_code=$?
           if [ "$claude_exit_code" -eq 0 ]; then
             claude_updated=true
           elif grep -qi "already exists" "$claude_stderr_file"; then
@@ -1548,7 +1548,7 @@ else
       codex-cli)
         if [ -n "$CODEX_CLI_COMMAND" ]; then
           "$CODEX_CLI_COMMAND" mcp remove weppy-roblox-mcp >/dev/null 2>&1 || true
-          "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@weppy/roblox-mcp@latest" >/dev/null 2>&1 || true
+          "$CODEX_CLI_COMMAND" mcp add weppy-roblox-mcp -- npx -y "@rafsunboss77/roblox-mcp@latest" >/dev/null 2>&1 || true
         fi
         if set_codex_mcp_config "$CODEX_CONFIG"; then
           success "Updated: $app_name"
