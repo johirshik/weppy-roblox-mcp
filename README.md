@@ -1,6 +1,6 @@
-# WEPPY Roblox AI Toolkit — AI Game Development for Roblox Studio
+# WEPPY+ Roblox AI Toolkit — AI Game Development for Roblox Studio
 
-> **WEPPY Roblox AI Toolkit** is a Roblox Studio AI development product. It includes the **WEPPY MCP Server** for AI app connections and the **WEPPY Roblox Studio Plugin** for live Studio control. Claude Code, Codex, and Antigravity can also install the optional **WEPPY AI Agent Plugin** for client-native setup and workflow guidance.
+> **WEPPY+ Roblox AI Toolkit** is a Roblox Studio AI development product. It includes the **WEPPY MCP Server** for AI app connections and the **WEPPY Roblox Studio Plugin** for live Studio control. Claude Code, Codex, and Antigravity can also install the optional **WEPPY+ AI Agent Plugin** for client-native setup and workflow guidance.
 
 **Multi-Place Studio work · Generated assets to Roblox · Bidirectional sync · Automated playtest · UI Studio**
 
@@ -8,7 +8,7 @@
 
 [![Demo - AI building a Roblox game in real time](https://img.youtube.com/vi/j14LZHYzLg8/maxresdefault.jpg)](https://www.youtube.com/watch?v=j14LZHYzLg8)
 
-## Why WEPPY Roblox AI Toolkit?
+## Why WEPPY+ Roblox AI Toolkit?
 
 AI coding agents like Claude, Codex, and Gemini are powerful, but they cannot see or modify anything inside Roblox Studio. The DataModel, scripts, terrain, and lighting are invisible to external tools. Without a bridge, AI can only generate code snippets that you must paste manually.
 
@@ -33,19 +33,19 @@ On the install page, copy the one-line script and run it in Terminal or PowerShe
 **macOS / Linux**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/install.sh | bash
 ```
 
 **Windows (PowerShell)**
 
 ```powershell
-irm https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/install.ps1 | iex
 ```
 
 Then reopen your AI app and restart Roblox Studio.
 
 Automatic **WEPPY MCP Server** registration supports Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, and Antigravity / Antigravity IDE / Antigravity CLI.
-For Claude Code, the installer also installs the **WEPPY AI Agent Plugin**. For Codex, it adds the plugin marketplace and then asks you to install **WEPPY AI Agent Plugin** from Plugin Directory. For Antigravity, the AI agent plugin is installed only when Antigravity CLI and `agy plugin` are available; otherwise the installer preserves the direct MCP connection.
+For Claude Code, the installer also installs the **WEPPY+ AI Agent Plugin**. For Codex, it adds the plugin marketplace and then asks you to install **WEPPY+ AI Agent Plugin** from Plugin Directory. For Antigravity, the AI agent plugin is installed only when Antigravity CLI and `agy plugin` are available; otherwise the installer preserves the direct MCP connection.
 
 ### Browser Web Install
 
@@ -65,28 +65,28 @@ Supported AI apps are Claude Code, Claude Desktop, Cursor, Codex CLI, Codex App,
 
 > Any MCP-compatible AI client works. The server command is `npx -y @weppy/roblox-mcp@latest`.
 
-### Optional WEPPY AI Agent Plugin
+### Optional WEPPY+ AI Agent Plugin
 
-The **WEPPY Roblox AI Toolkit** connects to every supported AI app through the **WEPPY MCP Server**. Claude Code, Codex, and Antigravity can additionally install the **WEPPY AI Agent Plugin** for client-native setup and workflow guidance for Studio control, sync, and assets.
+The **WEPPY+ Roblox AI Toolkit** connects to every supported AI app through the **WEPPY MCP Server**. Claude Code, Codex, and Antigravity can additionally install the **WEPPY+ AI Agent Plugin** for client-native setup and workflow guidance for Studio control, sync, and assets.
 
 **Claude Code**
 
 ```bash
-claude plugin marketplace add hope1026/weppy-roblox-mcp --scope user
+claude plugin marketplace add johirshik/weppy-roblox-mcp --scope user
 claude plugin install weppy-roblox-ai-toolkit@hope1026-roblox-mcp --scope user
 ```
 
 **Codex**
 
 ```bash
-codex plugin marketplace add hope1026/weppy-roblox-mcp
+codex plugin marketplace add johirshik/weppy-roblox-mcp
 ```
 
-After adding the Codex marketplace, restart Codex, open Plugin Directory, and install **WEPPY AI Agent Plugin**.
+After adding the Codex marketplace, restart Codex, open Plugin Directory, and install **WEPPY+ AI Agent Plugin**.
 
 **Antigravity**
 
-Antigravity CLI is required to install the **WEPPY AI Agent Plugin**. The one-line installer uses `agy plugin install` with the latest public GitHub release, verifies it with `agy plugin list`, and publishes the verified skill-only payload to supported IDE surfaces. Existing installs are replaced on every run so they can converge on the latest release.
+Antigravity CLI is required to install the **WEPPY+ AI Agent Plugin**. The one-line installer uses `agy plugin install` with the latest public GitHub release, verifies it with `agy plugin list`, and publishes the verified skill-only payload to supported IDE surfaces. Existing installs are replaced on every run so they can converge on the latest release.
 
 The installer reports results as installed, updated, reinstalled, repaired, fallback, failed, or skipped. A missing CLI keeps the shared MCP connection at `~/.gemini/config/mcp_config.json` working and reports fallback; an existing plugin is never treated as a skip. In a CLI-only profile, verified native plugin MCP replaces the shared direct WEPPY entry. When Antigravity IDE and CLI coexist, both plugin views stay skill-only and one shared direct `weppy-roblox-mcp` definition serves both. Outside the verified OS and version matrix, native discovery uses the MCP fallback.
 
@@ -121,7 +121,7 @@ Many Roblox experiences are not a single Place. WEPPY lets you keep up to five S
 - Use Dashboard Connection to see every AI agent, Studio Target, copyable Studio ID, and routing state
 - Work with the multi-Studio flow also documented by [Roblox's official Studio MCP guide](https://create.roblox.com/docs/studio/mcp), with WEPPY's dashboard visibility on top
 
-![WEPPY Dashboard Connection - multiple AI agents and Studio Targets connected to one MCP server](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_connection.png)
+![WEPPY Dashboard Connection - multiple AI agents and Studio Targets connected to one MCP server](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_connection.png)
 
 ### 3) Assets: Generate, upload, and apply images in Studio
 
@@ -132,7 +132,7 @@ WEPPY Assets turns a natural-language asset request into a Studio-ready result.
 - Upload images through Roblox Open Cloud and reuse place-specific or shared assets
 - Apply the returned asset URI to ImageLabel, Decal, Texture, or other Studio properties
 
-![WEPPY Dashboard Assets - local Asset Library items and Roblox upload status](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_assets.png)
+![WEPPY Dashboard Assets - local Asset Library items and Roblox upload status](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_assets.png)
 
 ### 4) Sync: Keep full project context stable for AI
 
@@ -141,7 +141,7 @@ AI works from a synchronized local mirror, so multi-file updates stay consistent
 - Basic: one-way sync (Studio -> Local)
 - Pro: bidirectional sync + per-type Direction/Apply Mode + history + up to five Places
 
-![Sync workflow - Studio and local files synchronized in real time](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/plugin/sync/sync-overview.png)
+![Sync workflow - Studio and local files synchronized in real time](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/plugin/sync/sync-overview.png)
 
 ### 5) Playtest: Let AI run and verify tests automatically
 
@@ -151,7 +151,7 @@ AI can control Roblox Studio playtests directly. It can start and stop Play (F5)
 - "Write a test that verifies the SpawnLocation is above the ground and run it."
 - "Validate that the script I just changed runs without errors in playtest."
 
-![WEPPY Playtest Dashboard - Test history and detailed report](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_playtest.png)
+![WEPPY Playtest Dashboard - Test history and detailed report](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_playtest.png)
 
 ### 6) UI Studio: Build and inspect in-game UI
 
@@ -161,7 +161,7 @@ UI Studio lets AI agents create in-game UI that matches your game's style, or an
 - Create or refine game-style menus, HUDs, buttons, labels, image panels, and other Roblox UI elements directly in Studio
 - Capture the result, compare before/after changes, and follow dashboard suggestions for layout, readability, touch targets, and safe areas
 
-![WEPPY UI Studio - Roblox Studio showing AI-generated in-game UI](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_ui_roblox_studio.png)
+![WEPPY UI Studio - Roblox Studio showing AI-generated in-game UI](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_ui_roblox_studio.png)
 
 ### 7) WEPPY Dashboard: Monitor AI work in real time
 
@@ -174,7 +174,7 @@ The MCP server provides a web dashboard where you can check connection status, t
 - Compare every change the AI made via Before & After in Changelog
 - Analyze workflow with tool execution history, UI Studio captures, and statistics
 
-![WEPPY Dashboard Overview - Server status, recent changes, and session summary](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_overview.png)
+![WEPPY Dashboard Overview - Server status, recent changes, and session summary](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/dashboard/dashboard_overview.png)
 
 ### 8) WEPPY Roblox Explorer: Browse Studio hierarchy in VSCode
 
@@ -186,7 +186,7 @@ Install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?it
 - Click to open synced scripts and property files
 - Multi-place support with sync status indicators for up to five Places
 
-![WEPPY Roblox Explorer - Studio instance tree displayed in VSCode sidebar](https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/docs/assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
+![WEPPY Roblox Explorer - Studio instance tree displayed in VSCode sidebar](https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/docs/assets/screenshots/roblox-explorer/roblox-explorer-screen.png)
 
 ## Use Cases
 
@@ -228,10 +228,10 @@ See [PRIVACY.md](PRIVACY.md) for the full telemetry notice.
 ## FAQ
 
 ### How do I connect Claude Code to Roblox Studio?
-Install from the web install page to register the **WEPPY MCP Server** and install the **WEPPY Roblox Studio Plugin**. You can also add the **WEPPY AI Agent Plugin** for Claude Code with the commands above. Its MCP command remains `npx -y @weppy/roblox-mcp@latest`.
+Install from the web install page to register the **WEPPY MCP Server** and install the **WEPPY Roblox Studio Plugin**. You can also add the **WEPPY+ AI Agent Plugin** for Claude Code with the commands above. Its MCP command remains `npx -y @weppy/roblox-mcp@latest`.
 
 ### How do I use Codex CLI with Roblox Studio?
-Install the **WEPPY Roblox Studio Plugin**, then add the **WEPPY MCP Server** config to Codex CLI. You can also add the Codex plugin marketplace and install **WEPPY AI Agent Plugin** from Plugin Directory.
+Install the **WEPPY Roblox Studio Plugin**, then add the **WEPPY MCP Server** config to Codex CLI. You can also add the Codex plugin marketplace and install **WEPPY+ AI Agent Plugin** from Plugin Directory.
 
 ### Does Roblox MCP work with Cursor?
 Yes. Any MCP-compatible AI client works.
@@ -264,6 +264,6 @@ Use of the Weppy name and logos is governed by [TRADEMARKS.md](TRADEMARKS.md).
 
 ---
 
-[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@hope1026/weppy-roblox-mcp)](https://smithery.ai/server/@hope1026/weppy-roblox-mcp)
+[![npm version](https://img.shields.io/npm/v/@weppy/roblox-mcp)](https://www.npmjs.com/package/@weppy/roblox-mcp) [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/) [![Smithery](https://smithery.ai/badge/@johirshik/weppy-roblox-mcp)](https://smithery.ai/server/@johirshik/weppy-roblox-mcp)
 
-[GitHub Issues](https://github.com/hope1026/weppy-roblox-mcp/issues) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)
+[GitHub Issues](https://github.com/johirshik/weppy-roblox-mcp/issues) · [npm](https://www.npmjs.com/package/@weppy/roblox-mcp)

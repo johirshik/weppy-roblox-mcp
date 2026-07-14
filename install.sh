@@ -3,12 +3,12 @@
 # WEPPY — One-line install script (macOS/Linux)
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/hope1026/weppy-roblox-mcp/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/johirshik/weppy-roblox-mcp/main/install.sh | bash
 #
 # Interactive 3 steps:
-#   [1/3] Setup — install WEPPY Roblox Studio Plugin via npx
+#   [1/3] Setup — install WEPPY+ Roblox Studio Plugin via npx
 #   [2/3] Register MCP with AI apps (user selection)
-#   [3/3] Setup WEPPY AI Agent Plugin for Claude Code / Codex / Antigravity (best effort)
+#   [3/3] Setup WEPPY+ AI Agent Plugin for Claude Code / Codex / Antigravity (best effort)
 #
 
 set -euo pipefail
@@ -45,7 +45,7 @@ fail()    { printf "${RED}  ✗${NC} %s\n" "$1"; }
 # shellcheck disable=SC2059
 step()    { printf "\n${BOLD}${CYAN}[%s]${NC} ${BOLD}%s${NC}\n" "$1" "$2"; }
 
-ANTIGRAVITY_CLI_REQUIRED_MESSAGE='Antigravity CLI is required to install the WEPPY AI Agent Plugin'
+ANTIGRAVITY_CLI_REQUIRED_MESSAGE='Antigravity CLI is required to install the WEPPY+ AI Agent Plugin'
 
 report_antigravity_status() {
   local status="$1"
@@ -881,7 +881,7 @@ prepare_antigravity_plugin_source() {
 
   tmp=$(mktemp -d "${TMPDIR:-/tmp}/weppy-antigravity-plugin-XXXXXX") || return 1
   archive="$tmp/repo.tar.gz"
-  release_json=$(curl -fsSL "https://api.github.com/repos/hope1026/weppy-roblox-mcp/releases/latest") || {
+  release_json=$(curl -fsSL "https://api.github.com/repos/johirshik/weppy-roblox-mcp/releases/latest") || {
     rm -rf "$tmp"
     return 1
   }
@@ -889,7 +889,7 @@ prepare_antigravity_plugin_source() {
     rm -rf "$tmp"
     return 1
   }
-  curl -fsSL "https://codeload.github.com/hope1026/weppy-roblox-mcp/tar.gz/refs/tags/$release_tag" -o "$archive" || {
+  curl -fsSL "https://codeload.github.com/johirshik/weppy-roblox-mcp/tar.gz/refs/tags/$release_tag" -o "$archive" || {
     rm -rf "$tmp"
     return 1
   }
@@ -1207,7 +1207,7 @@ publish_antigravity_ide_plugin() {
 
 report_antigravity_result() {
   local pre_state="$1"
-  local message="${2:-WEPPY AI Agent Plugin for Antigravity}"
+  local message="${2:-WEPPY+ AI Agent Plugin for Antigravity}"
 
   case "$pre_state" in
     absent) report_antigravity_status installed "$message" ;;
@@ -1239,13 +1239,13 @@ activate_antigravity_fallback() {
     return 0
   fi
 
-  report_antigravity_status failed "WEPPY AI Agent Plugin for Antigravity and the shared MCP fallback are unavailable"
+  report_antigravity_status failed "WEPPY+ AI Agent Plugin for Antigravity and the shared MCP fallback are unavailable"
   return 1
 }
 
 # ── Header ──
 # shellcheck disable=SC2059
-printf "\n${BOLD}WEPPY Installer${NC}\n"
+printf "\n${BOLD}WEPPY+ Installer${NC}\n"
 # shellcheck disable=SC2059
 printf "${DIM}AI-powered Roblox Studio integration${NC}\n"
 printf "%s\n" "════════════════════════════════════"
@@ -1268,7 +1268,7 @@ success "Node.js $(node -v) detected"
 # ═══════════════════════════════════
 # [1/3] Setup — Roblox Studio Plugin
 # ═══════════════════════════════════
-step "1/3" "Setup WEPPY Roblox Studio Plugin"
+step "1/3" "Setup WEPPY+ Roblox Studio Plugin"
 
 if confirm "  Run npx -y @weppy/roblox-mcp@latest --setup?"; then
   setup_tmp_dir=""
@@ -1582,12 +1582,12 @@ else
 fi
 
 # ═══════════════════════════════════
-# [3/3] Setup WEPPY AI Agent Plugin
+# [3/3] Setup WEPPY+ AI Agent Plugin
 # ═══════════════════════════════════
-step "3/3" "Setup WEPPY AI Agent Plugin"
+step "3/3" "Setup WEPPY+ AI Agent Plugin"
 
 if [ "${WEPPY_SKIP_AI_AGENT_PLUGIN:-}" = "1" ]; then
-  warn "WEPPY AI Agent Plugin setup skipped (WEPPY_SKIP_AI_AGENT_PLUGIN=1)"
+  warn "WEPPY+ AI Agent Plugin setup skipped (WEPPY_SKIP_AI_AGENT_PLUGIN=1)"
 else
   ai_agent_plugin_any=false
 
@@ -1595,7 +1595,7 @@ else
     ai_agent_plugin_any=true
     claude_marketplace_stderr=$(mktemp "${TMPDIR:-/tmp}/weppy-claude-plugin-marketplace-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-claude-plugin-marketplace.err")
     claude_marketplace_exit=0
-    "$CLAUDE_CLI_COMMAND" plugin marketplace add hope1026/weppy-roblox-mcp --scope user 2>"$claude_marketplace_stderr" || claude_marketplace_exit=$?
+    "$CLAUDE_CLI_COMMAND" plugin marketplace add johirshik/weppy-roblox-mcp --scope user 2>"$claude_marketplace_stderr" || claude_marketplace_exit=$?
     if [ "$claude_marketplace_exit" -eq 0 ] || is_already_ai_agent_plugin_result "$claude_marketplace_stderr"; then
       success "Claude Code marketplace ready"
 
@@ -1603,9 +1603,9 @@ else
       claude_plugin_exit=0
       "$CLAUDE_CLI_COMMAND" plugin install weppy-roblox-ai-toolkit@hope1026-roblox-mcp --scope user 2>"$claude_plugin_stderr" || claude_plugin_exit=$?
       if [ "$claude_plugin_exit" -eq 0 ] || is_already_ai_agent_plugin_result "$claude_plugin_stderr"; then
-        success "WEPPY AI Agent Plugin for Claude Code ready"
+        success "WEPPY+ AI Agent Plugin for Claude Code ready"
       else
-        warn "WEPPY AI Agent Plugin install for Claude Code skipped or failed (non-blocking)"
+        warn "WEPPY+ AI Agent Plugin install for Claude Code skipped or failed (non-blocking)"
         sed 's/^/    /' "$claude_plugin_stderr" || true
       fi
       rm -f "$claude_plugin_stderr"
@@ -1615,24 +1615,24 @@ else
     fi
     rm -f "$claude_marketplace_stderr"
   else
-    warn "WEPPY AI Agent Plugin for Claude Code skipped (claude CLI not found)"
+    warn "WEPPY+ AI Agent Plugin for Claude Code skipped (claude CLI not found)"
   fi
 
   if [ -n "${CODEX_CLI_COMMAND:-}" ]; then
     ai_agent_plugin_any=true
     codex_marketplace_stderr=$(mktemp "${TMPDIR:-/tmp}/weppy-codex-plugin-marketplace-XXXXXX.err" 2>/dev/null || echo "${HOME}/weppy-codex-plugin-marketplace.err")
     codex_marketplace_exit=0
-    "$CODEX_CLI_COMMAND" plugin marketplace add hope1026/weppy-roblox-mcp 2>"$codex_marketplace_stderr" || codex_marketplace_exit=$?
+    "$CODEX_CLI_COMMAND" plugin marketplace add johirshik/weppy-roblox-mcp 2>"$codex_marketplace_stderr" || codex_marketplace_exit=$?
     if [ "$codex_marketplace_exit" -eq 0 ] || is_already_ai_agent_plugin_result "$codex_marketplace_stderr"; then
       success "Codex marketplace ready"
-      printf "    Restart Codex, open Plugin Directory, then install WEPPY AI Agent Plugin.\n"
+      printf "    Restart Codex, open Plugin Directory, then install WEPPY+ AI Agent Plugin.\n"
     else
       warn "Codex marketplace setup skipped or failed (non-blocking)"
       sed 's/^/    /' "$codex_marketplace_stderr" || true
     fi
     rm -f "$codex_marketplace_stderr"
   else
-    warn "WEPPY AI Agent Plugin for Codex skipped (codex CLI not found)"
+    warn "WEPPY+ AI Agent Plugin for Codex skipped (codex CLI not found)"
   fi
 
   antigravity_detected=false
@@ -1658,7 +1658,7 @@ else
         exit 1
       fi
     elif [ -z "${ANTIGRAVITY_CLI_COMMAND:-}" ]; then
-      if ! activate_antigravity_fallback "Antigravity CLI is required to install the WEPPY AI Agent Plugin. Install it from https://antigravity.google/docs/cli-install"; then
+      if ! activate_antigravity_fallback "Antigravity CLI is required to install the WEPPY+ AI Agent Plugin. Install it from https://antigravity.google/docs/cli-install"; then
         exit 1
       fi
     elif prepare_antigravity_plugin_source; then
@@ -1674,7 +1674,7 @@ else
 
       if [ -z "$ANTIGRAVITY_NATIVE_VIEW_PATH" ] \
         || { [ "$antigravity_detected" = true ] && [ -z "$ANTIGRAVITY_IDE_VIEW_PATH" ]; }; then
-        if ! activate_antigravity_fallback "WEPPY AI Agent Plugin payload staging failed for Antigravity; MCP fallback preserved"; then
+        if ! activate_antigravity_fallback "WEPPY+ AI Agent Plugin payload staging failed for Antigravity; MCP fallback preserved"; then
           exit 1
         fi
       else
@@ -1687,18 +1687,18 @@ else
 
         if install_antigravity_cli_plugin "$ANTIGRAVITY_MODE"; then
           if [ "$antigravity_detected" = true ] && ! publish_antigravity_ide_plugin; then
-            if ! activate_antigravity_fallback "WEPPY AI Agent Plugin replacement failed for Antigravity IDE; MCP fallback preserved"; then
+            if ! activate_antigravity_fallback "WEPPY+ AI Agent Plugin replacement failed for Antigravity IDE; MCP fallback preserved"; then
               exit 1
             fi
           else
-            report_antigravity_result "$ANTIGRAVITY_PLUGIN_PRE_STATE" "WEPPY AI Agent Plugin for Antigravity; restart and verify"
+            report_antigravity_result "$ANTIGRAVITY_PLUGIN_PRE_STATE" "WEPPY+ AI Agent Plugin for Antigravity; restart and verify"
           fi
-        elif ! activate_antigravity_fallback "WEPPY AI Agent Plugin replacement through Antigravity CLI failed; previous AI agent plugin or MCP fallback preserved" true; then
+        elif ! activate_antigravity_fallback "WEPPY+ AI Agent Plugin replacement through Antigravity CLI failed; previous AI agent plugin or MCP fallback preserved" true; then
           exit 1
         fi
       fi
     else
-      if ! activate_antigravity_fallback "WEPPY AI Agent Plugin source could not be prepared for Antigravity; MCP fallback preserved"; then
+      if ! activate_antigravity_fallback "WEPPY+ AI Agent Plugin source could not be prepared for Antigravity; MCP fallback preserved"; then
         exit 1
       fi
     fi
@@ -1709,7 +1709,7 @@ else
   [ -n "$ANTIGRAVITY_PLUGIN_SOURCE_TEMP" ] && rm -rf "$ANTIGRAVITY_PLUGIN_SOURCE_TEMP"
 
   if [ "$ai_agent_plugin_any" = false ]; then
-    info "WEPPY AI Agent Plugin can be installed later from Claude Code, Codex, or Antigravity"
+    info "WEPPY+ AI Agent Plugin can be installed later from Claude Code, Codex, or Antigravity"
   fi
 fi
 
@@ -1727,6 +1727,6 @@ printf "  1. Restart Roblox Studio\n"
 printf "  2. Look for the ${BOLD}WEPPY${NC} button in the Plugins tab\n"
 printf "  3. Click Connect and start building with AI!\n\n"
 printf "  Auto registration: Claude Code, Claude Desktop, Cursor, Codex CLI/App, Gemini CLI, Antigravity / Antigravity IDE, Antigravity CLI\n\n"
-printf "  WEPPY AI Agent Plugin: Claude Code installs automatically; Antigravity installs only when Antigravity CLI is available; Codex installs from Plugin Directory after marketplace add.\n\n"
+printf "  WEPPY+ AI Agent Plugin: Claude Code installs automatically; Antigravity installs only when Antigravity CLI is available; Codex installs from Plugin Directory after marketplace add.\n\n"
 # shellcheck disable=SC2059
 printf "  ${DIM}Docs: https://weppyai.com/en/install${NC}\n\n"
