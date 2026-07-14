@@ -17,6 +17,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [2.10.3] - 2026-07-14
+
+### Bug Fixes
+
+- **Reliable Antigravity plugin reinstalls** — The one-line installers now use Antigravity CLI as the native plugin prerequisite, replace existing plugins with the latest public release, and distinguish installs, updates, reinstalls, repairs, fallbacks, and hard failures without treating an existing plugin as a skipped install.
+
 ## [2.10.2] - 2026-07-13
 
 ### Features
@@ -330,6 +336,10 @@ All notable changes to this project will be documented in this file.
 
 ## [2.6.0] - 2026-04-15
 
+### ⚠️ BREAKING CHANGES
+
+- **Legacy sync folder names removed from spec and runtime** — `roblox-project-sync` (the pre-rebrand folder name) is no longer recognized by the MCP server, dashboard, Explorer extension, or playtest/test-report writers. Users who still had sync data under `roblox-project-sync/` must manually rename the folder to `weppy-project-sync/`. The `wrox-project-sync` → `weppy-project-sync` one-shot copy migration remains in place as transitional compat code for users upgrading from v2.5.x but is no longer part of the spec and will be removed in a future release.
+
 ### Features
 
 - **Edit-mode screen capture** — AI agents can now capture the Studio viewport directly in Edit mode, so they can see what you see and give feedback on layout, lighting, and placement without entering Playtest.
@@ -339,12 +349,6 @@ All notable changes to this project will be documented in this file.
 
 - **Improved overall stability** — Tool execution, error messages, sync operations, and the dashboard "What's New" page have all been hardened for a smoother, more reliable experience.
 
-
-## [Unreleased]
-
-### ⚠️ BREAKING CHANGES
-
-- **Legacy sync folder names removed from spec and runtime** — `roblox-project-sync` (the pre-rebrand folder name) is no longer recognized by the MCP server, dashboard, Explorer extension, or playtest/test-report writers. Users who still had sync data under `roblox-project-sync/` must manually rename the folder to `weppy-project-sync/`. The `wrox-project-sync` → `weppy-project-sync` one-shot copy migration remains in place as transitional compat code for users upgrading from v2.5.x but is no longer part of the spec and will be removed in a future release.
 
 
 
